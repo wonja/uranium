@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title>Superhero Unit Test</title>
+  <script src="../lib/external/xui-2.0.0.js"></script>
+  <script src="../lib/uranium_mixins.js"></script>
+  <script src="../lib/superhero.js"></script>
+  <link rel="stylesheet" type='text/css' href='css/test.css' />
+  <link rel="stylesheet" type='text/css' href='css/superhero.css' />
+</head>
+
+<body suite="Superhero">
+
+  <h1>Superhero</h1>
+  <hr>
+  
+  <h2>Description:</h2>
+  <div class="description">
+    <p>This widget allows you to specify a set of hero images, and will display
+      them one at a time and crossfade between them.
+    </p>
+  </div>
+  
+  <h2>A Simple Example:</h2>
+  <div class="test">
+    <div data-ur-set="superhero" data-ur-id="blah" data-ur-superhero-period="3">
+      <img data-ur-superhero-component="hero" src="images/kittens_1.jpg">
+      <img data-ur-superhero-component="hero" src="images/kittens_2.jpg">
+      <img data-ur-superhero-component="hero" src="images/kittens_3.jpg">
+      <img data-ur-superhero-component="hero" src="images/kittens_4.jpg">
+      <img data-ur-superhero-component="hero" src="images/kittens_5.jpg">
+    </div>
+  </div>
+  
+  <h2>A Simple Example with a Shorter Period:</h2>
+  <div class="test">
+    <div data-ur-set="superhero" data-ur-id="bloo" data-ur-superhero-period="2">
+      <img data-ur-superhero-component="hero" src="images/moov1.JPG">
+      <img data-ur-superhero-component="hero" src="images/moov2.JPG">
+      <img data-ur-superhero-component="hero" src="images/moov3.JPG">
+      <img data-ur-superhero-component="hero" src="images/moov4.JPG">
+      <img data-ur-superhero-component="hero" src="images/moov5.JPG">
+    </div>
+  </div>
+
+</body>
+
+</html>

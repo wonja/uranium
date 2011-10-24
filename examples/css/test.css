@@ -17,3 +17,20 @@
 body {
   font-family: sans-serif;
 }
+
+li[data-ur-set="toggler"] {
+  
+}
+
+li[data-ur-set="toggler"] [data-ur-toggler-component='button'] { 
+  background-color: #A3E2F5;	
+}
+
+li[data-ur-set="toggler"] [data-ur-toggler-component='content'] {
+  display:none;
+  background-color: #D0E9F0;
+}
+
+li[data-ur-set="toggler"] [data-ur-toggler-component='content'][data-ur-state="enabled"] {
+  display: block;
+}

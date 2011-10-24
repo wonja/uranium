@@ -30,28 +30,34 @@
       </p>
     </div>
     
-    <h2> Options </h2>
-    <div class="option">
+    <h2> Components </h2>
+    <div class="components">
+      <h3> Required </h3>
       <p>
         Firstly, we wrap the whole widget in a tag with the attribute data-ur-set="carousel".
-        </p>
+      </p>
       <p>
         The main attribute we need to use for the carousel is:</br>
-        data-ur-carousel-component</br>
-        To this attribute, we can add various values:
+        <p class="code">data-ur-carousel-component</p>
+        To this attribute, we add values described below,
       </p>
       <ul>
-        <li>"view_container" - for the div that wraps the whole carousel</li>
-        <li>"count" - this gives us an indicator of the position of the carousel, in the form '1 of 8', etc.</li>
-        <li>"button" - for the previous and next buttons</li>
-        <li>"scroll_container" - for the div that wraps the scrolling bit of the carousel</li>
-        <li>"item" - for each item to be displayed in the carousel</li>
+        <li data-ur-set='toggler'><div data-ur-toggler-component="button">"view_container"</div><div data-ur-toggler-component="content">&emsp;&emsp;&emsp;&emsp; - for the div that wraps the whole carousel. It has no overflow, so you only see one item at a time.</div></li>
+        
+        <li data-ur-set='toggler'><div data-ur-toggler-component="button">"scroll_container"</div><div data-ur-toggler-component="content">&emsp;&emsp;&emsp;&emsp; - for the div that wraps the scrolling bit of the carousel</div></li>
+        
+        <li data-ur-set='toggler'><div data-ur-toggler-component="button">"item"</div><div data-ur-toggler-component="content">&emsp;&emsp;&emsp;&emsp; - for each item to be displayed in the carousel. They can be &lt;div&gt; or &lt;img&gt; tags. In the CSS, each item needs to have float:left and display:inline stylings applied.</div></li>
       </ul>
       <p>
         We need to add a special attribute to the previous and next buttons. The previous button needs
         the attribute data-ur-carousel-button-type="prev", and the next button needs (correspondingly)
         data-ur-carousel-button-type="next".
       </p>
+      <h3> Optional </h3>
+      <ul>
+        <li data-ur-set='toggler'><div data-ur-toggler-component="button">"count"</div><div data-ur-toggler-component="content">&emsp;&emsp;&emsp;&emsp; - this gives us an indicator of the position of the carousel, in the form '1 of 8', etc.</div></li>
+      <li data-ur-set='toggler'><div data-ur-toggler-component="button">"button"</div><div data-ur-toggler-component="content">&emsp;&emsp;&emsp;&emsp; - for the previous and next buttons.</div></li>
+      </ul>
     </div>
 
     <h2> Demonstration </h2>

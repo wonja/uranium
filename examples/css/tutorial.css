@@ -3,5 +3,18 @@
 }
 
 *[data-ur-tabs-component='content'] {
-  display:none;
+  display: none;
+}
+
+#end_product *[data-ur-toggler-component='button'] {
+  background: #A3E2F5;
+}
+
+#end_product *[data-ur-toggler-component='content'][data-ur-state='enabled'] {
+  display: block;
+  background: #A3E2F5;
+}
+
+#end_product *[data-ur-toggler-component='content'][data-ur-state="disabled"] {
+  display: none;
 }

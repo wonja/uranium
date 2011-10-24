@@ -26,7 +26,6 @@ position: relative;
   background-color: #6495ED;
   border: 1px solid black;
   padding: 20px;
-  text-align: center;
 }
 
 *[data-ur-set="tabs"][data-ur-tab-id="html"] {

@@ -1,66 +1,114 @@
 <html>
   <head>
+    <title>Styling</title>
+    <script src="../build/src/uranium-pretty.js"></script>
+    <link rel="stylesheet" type='text/css' href='css/test.css' />
+    <link rel="stylesheet" type='text/css' href='css/styling.css' />
   </head>
   <body>
-    Lazy styling vs Proper styling
+    <h1>Styling</h1>
+    
+    <div id="lazy_vs_proper">
+      <h2>Lazy and Proper Styling</h2>
+    
+      <p>There are two types of styling for Uranium widgets. One we generally refer to as
+        "lazy" styling, the other as "proper" styling. Lazy styling requires fewer lines of
+        CSS, but proper styling is really the best way to style your widgets.</p>
+      <div class="styling">
+        <h3>Lazy Styling</h3>
+      
+        <p>As its name implies, lazy styling is simpler and faster to do. You only really
+          need to write out two declaration blocks. The first covers the element in its
+          non-enabled state, and the other when the element is enabled.</p>
+        
+        <p>Say we're styling a toggler button. When "enabled", we want it to be full opacity. However, 
+          when disabled we want it to be at 50% opacity. Pretty simple using the following CSS:</p>
+          
+        <p class="code">
+          *[data-ur-toggler-component='button'] {</br>
+            &emsp;&emsp;background: red;</br>
+            &emsp;&emsp;opacity: 0.5;</br>
+          }</br></br>
 
-<div class='test' name='Dialog'>
+          *[data-ur-toggler-component='button'][data-ur-state='enabled'] {</br>
+            &emsp;&emsp;background: red;</br>
+            &emsp;&emsp;opacity: 1.0;</br>
+          }
+        </p>
+        
+        <p>Its default state (the first block) describes its color and that it should be at 50% opacity.
+          The second block says that when the button is enabled, it will be at 100% opacity. Simple. See
+          how it works by clicking on the button below. </p>
+        
+        <div data-ur-toggler-component='button' data-ur-id='LazyPopup' >
+          Popup !
+        </div>
 
-  <h3> Popup -- with Lazy Styling</h3>
+        <div data-ur-toggler-component='content' data-ur-id='LazyPopup'>
+           <img src='images/popup.jpeg'>
+        </div>
+        
+        <p>However, lazy styling can cause problems. Let's take a look at a better way to
+          style widgets.</p>
+      </div>
+      <div class="styling">
+        <h3>Proper Styling</h3>
+        
+        <p>The problem with lazy styling is this: you're only really saying what the
+          element looks like when the data-ur-state is <i>enabled</i>. We're taking it 
+          for granted that the non-enabled state is the same as the disabled state. This
+          is an OK assumption to make in most cases.</p>
+        
+        <p>But this isn't actually the case. What actually happens is that the element
+          goes through a brief period without any data-ur-state before Uranium assigns
+          the default (which is usually disabled). (Of course, this doesn't
+          apply if you specify in your HTML that the element has a data-ur-set.)</p>
+        
+        <p>So when we style the non-enabled state in lazy styling, we're actually styling
+          <i>two</i> states - the one before any state has been assigned AND the "disabled"
+          state.</p>
+        
+        <p>How can this be exploited? Well, we can have three separate states. When the page
+          first loads, the CSS that's applied will be anything without a data-ur-state specified.
+          Then we can style for the enabled and disabled states separately.</p>
+        
+        <p class="code">
+          .popup_button*[data-ur-toggler-component='button'] {</br>
+            &emsp;&emsp;background: blue;</br>
+          }</br></br>
+          
+          .popup_button*[data-ur-toggler-component='button'][data-ur-state='disabled'] {</br>
+            &emsp;&emsp;background: red;</br>
+            &emsp;&emsp;opacity: 0.5;</br>
+          }</br></br>
 
-  <div class='description'>
-    This (and the next) toggler use a button to make an image appear.</br>
-    However, this popup uses "lazy styling". What is "lazy styling", exactly?
-    It's when we aren't really styling the 'disabled' data-ur-state  --- we just style on 
-    the 'enabled' state.
+          .popup_button*[data-ur-toggler-component='button'][data-ur-state='enabled'] {</br>
+            &emsp;&emsp;background: red;</br>
+            &emsp;&emsp;opacity: 1.0;</br>
+          }
+        </p>
+        
+        <p>So when the page loads, the button will be blue. When its clicked on, the button
+          will be enabled and made red. When it is clicked on again, making it disabled,
+          it will have 50% opacity. Check it out below.</p>
+  
+        <div data-ur-toggler-component='button' data-ur-id='ProperPopup'
+           class='popup_button'>
+          Popup !
+        </div>
 
- </div>
-
-  <div data-ur-toggler-component='button' data-ur-id='MyPopup' >
-    Popup !
+        <div data-ur-toggler-component='content' data-ur-id='ProperPopup'
+          data-ur-state='disabled' class='popup_content'>
+           <img src='images/popup.jpeg'>
+        </div>
+        
+        <p>The eagle-eyed among you may have noticed that in the second example, we're
+          including a class to our CSS selectors. This is to make them "stronger". In CSS,
+          some selectors can override others.</p>
+        
+        <p>And that's how (and why) we should style things properly, rather than lazily.</p>
+      </div>
+    </div>
   </div>
 
-  <div data-ur-toggler-component='content' data-ur-id='MyPopup'>
-     <img src='images/popup.jpeg'>
-  </div>
-
-  <p>
-    The pop-up appears way up the page. Not good.
-  </p>
-</div>
-
-<div class='test' name='DialogProper'>
-  <a name="non_lazy_styling"></a>
-  <h3> Popup -- with Proper Styling</h3>
-
-  <div class='description'>
-
-    This time, we'll use proper styling for the popup. 
-    We add the data-ur-state attributes so that we can compartmentalize
-    styles.
-
- </div>
-
- <p class="code">
-   .popup_content[data-ur-state='disabled'] {<br/>
-    &emsp;&emsp;display: none;<br/>
-     &emsp;&emsp;opacity: 0.5;<br/>
-   }<br/>
-
-   .popup_content[data-ur-state='enabled'] {<br/>
-     &emsp;&emsp;display: inline-block;<br/>
-     &emsp;&emsp;opacity: 1.0;<br/>
-   }
- </p>
-
-  <div data-ur-toggler-component='button' data-ur-id='MyProperPopup'
-    data-ur-state='disabled' class='popup_button'>
-    Popup !
-  </div>
-
-  <div data-ur-toggler-component='content' data-ur-id='MyProperPopup'
-    data-ur-state='disabled' class='popup_content'>
-     <img src='images/popup.jpeg'>
-  </div>
-
-</div>
+</body>

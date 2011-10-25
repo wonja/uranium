@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Model</title>
+    <script src="../build/src/uranium-pretty.js"></script>
+    <link rel="stylesheet" type='text/css' href='css/test.css' />
+  </head>
+  <body>
+    <h1>Model</h1>
+    <p>Uranium works with declarative javascript. What this means is that we give tags in the HTML
+      specific attributes. These attributes tell the javascript what to do.</p>
+    <p>Here's a couple of simple examples:</p>
+    <p class="code">
+      &lt;div data-ur-set="toggler">&emsp;&emsp;&emsp;&emsp;&lt;/div>
+    </p>
+    <p>This attribute tells javascript to treat this div tag as a toggler set.</p>
+    <p>And this:</p>
+    <p class="code">
+      &lt;span data-ur-toggler-component='button' data-ur-state='enabled'>&emsp;&emsp;&emsp;&emsp;&lt;/span>
+    </p>
+    <p>Tells Uranium to treat the span as a toggler button in its enabled state.</p>
+    <h2>Naming</h2>
+    <p>The attributes in Uranium are fairly lengthy. This is because we have chosen to follow the 
+      conventions of HTML5.</p>
+    <p>In HTML4, we weren't allowed to create our own attributes. Only ids, classes and names were really
+      accepted. In HTML5, we can &mdash; but we have to start every attribute with "data". So that's
+      why all Uranium's attributes start with that. After that, it's "ur" &mdash; to signify that
+      the attribute is for Uranium.</p>
+    <p>After those two, the names of the attributes are quite straight-forward. data-ur-set helps
+      define the following set of tags by grouping them into a set (giving the name of the widget as
+      a value).</p>
+  </body>
+</html>

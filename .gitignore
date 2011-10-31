@@ -3,3 +3,4 @@ BUILD_VERSION
 JENKINS
 doc/*.html
 .rvmrc
+site/.bundles
